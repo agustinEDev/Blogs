@@ -1,0 +1,27 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+
+    <h2> Blogs </h2>
+
+{% endblock page_header %}
+
+{% block content %}
+    <ul class="list-group border-bottom pb-2 mb-4">
+        {% for blog in blogs %}
+            <div class="card mb-3">
+                <!-- Card header with timestamp and edit link -->
+                <h7 class = "card-header">
+                    <a href="{% url 'blogs:blog' blog.id %}">{{ blog.title }}</a>
+                    <p>{{ blog.date_added|date:'M d, Y H:i' }}</p>
+                    <p>{{ blog.description|linebreaks }}</p>
+                </h7>
+            </div>
+        {% empty %}
+            <li class="list-group-item border-0">No blogs have been added yet.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'blogs:new_blog' %}">Add a new blog</a>
+
+{% endblock content %}
