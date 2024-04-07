@@ -16,7 +16,7 @@
         <div class="card mb-3">
             <!-- Card header with timestamp and edit link -->
             <h4 class = "card-header">
-                {{ entry.title }}
+                {{ entry.title }} - 
                 {{ entry.date_added|date:'M d, Y H:i' }}
                 <small><a href="{% url 'blogs:edit_entry' entry.id %}">
                         Edit entry</a></small>
